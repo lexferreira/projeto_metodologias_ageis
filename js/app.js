@@ -1,3 +1,3 @@
 function login() {
-	window.location.replace("http://localhost:3000/pages/cadastro_usuario.html");
+	window.location.replace("/index.php/Usuario_controller");
 }
