@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
     <head>
-        <title>My Website</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <title><?php echo $title;?></title>
         <!--Dependencies -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/app.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>node_modules/bootstrap/dist/css/bootstrap.css">
