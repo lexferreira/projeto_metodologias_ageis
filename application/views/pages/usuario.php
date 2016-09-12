@@ -18,7 +18,7 @@
 			<div class="header__logo">
 				<img src="../img/icon.png">
 			</div>
-			<h2 class="header__title">Cadastro de usuario</h2>
+			<h2 class="header__title">Usuario</h2>
 			<div class="header__user">
 				<div class="header__user__content">
 					<img src="../img/user.png">
@@ -37,31 +37,32 @@
 					</ul>
 				</div>
 				<div class="main__content--right">
-					<form class=" main__content--right__form">
-						<div class="form-group">
-						    <input type="text" class="form-control" id="InputName" placeholder="Nome...">
+					<div class="container">
+						<div class="row">
+							<table class="table table-hover col-sm-4">
+							    <thead>
+							      <tr>
+							        <th>Matricula</th>
+							        <th>Nome</th>
+							        <th>Cpf</th>
+							        <th>Endereço</th>
+							        <th>Função</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+								    <?php foreach ($usuarios as $row): ?>
+								    <tr>
+									    <td><?= $row['nome'] ?></td>
+									    <td>Admin</td>
+									    <td>41881000977</td>
+									    <td>Rua mantova</td>
+									    <td>Administrador</td>
+								    </tr>
+							    	<? endforeach; ?>
+							    </tbody>
+						  	</table>
 						</div>
-						<div class="form-group">
-						    <input type="text" class="form-control" id="" placeholder="Matricula...">
-						</div>
-						<div class="form-group">
-						    <input type="text" class="form-control" id="" placeholder="Cpf...">
-						</div>
-						<div class="form-group">
-						    <input type="numer" class="form-control" id="" placeholder="Endereço...">
-						</div>
-						<div class="form-group">
-						    <input type="email" class="form-control" id="" placeholder="Função...">
-						</div>
-		    			<div class="form-group">
-						    <input type="password" class="form-control" id="" placeholder="Senha...">
-						</div>
-						<div class="form-group">
-						    <input type="password" class="form-control" id="" placeholder="Repetir a senha...">
-						</div>
-						<button type="submit" onclick="" class="btn btn-default">Cadastrar</button>
-						<button type="button" onclick="" class="btn btn-default">Limpar</button>
-	    			</form>
+					</div>
 				</div>
 			</div>
 		</div>

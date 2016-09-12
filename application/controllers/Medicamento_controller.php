@@ -7,6 +7,6 @@ class Medicamento_controller extends CI_Controller {
 	{
         $data['title'] = 'Vendrafarma - Medicamentos';
 		$this->load->helper('url');
-		$this->load->view('pages/medicamento');
+		$this->load->view('pages/medicamento',$data);
 	}
 }

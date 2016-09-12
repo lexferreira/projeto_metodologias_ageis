@@ -6,6 +6,6 @@ class Venda_controller extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$this->load->view('pages/venda');
+		$this->load->view('pages/venda',$data);
 	}
 }

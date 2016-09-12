@@ -125,6 +125,9 @@ html {
     justify-content: center;
     align-items: center;
     width: 100%; }
+    .cadastro-usuario__content .cadastro-usuario__table {
+      width: 650px;
+      transform: translateX(-65px); }
     .cadastro-usuario__content .cadastro-usuario__form {
       width: 650px;
       transform: translateX(-65px); }
