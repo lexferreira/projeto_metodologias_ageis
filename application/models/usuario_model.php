@@ -20,7 +20,7 @@ class Usuario_model extends CI_Model{
 			$this->db->where('matricula', $id);
 			$this->db->select('*');
 			$this->db->from('usuario');
-			return $this->db->get()->result_array();
+			return $this->db->get()->result();
 		}
 
 		$this->db->select('*');
@@ -29,16 +29,17 @@ class Usuario_model extends CI_Model{
 	}
 
 	public function validar($matricula, $senha) {
-
 		$this->db->where('matricula', $matricula);
 		$this->db->select('senha');
 		$this->db->from('usuario');
-		$senha_db = $this->db->get()->result_array();
+		$dados = array( 
+			'senha' => $this->db->get()->result_array()
+		);
 
-		if($senha_db == $senha) {
-			return $senha_db;
+		if($dados['senha']==$senha) {
+			return true;
 		} else {
-			return $senha_db;
+			return false;
 		}
 	}
 

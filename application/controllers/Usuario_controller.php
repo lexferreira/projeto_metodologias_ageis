@@ -28,11 +28,38 @@ class Usuario_controller extends CI_Controller {
 		$this->load->view('pages/cadastro_usuario',$data);
 	}
 
+	public function form_alterar($id = null) {
+		if ($id) {
+			$this->load->model('Usuario_model');
+			//listando todos os usuarios
+			$usuarios = $this->Usuario_model->listar($id);
+			//se houver mais que um usuario
+			if ($usuarios->num_rows() > 0 ) {
+				//passando os atributos referentes ao usuario listado
+				$dados['title'] = 'Edição de Registro';
+				$dados['matricula'] = $usuarios->row()->matricula;
+				$dados['nome'] = $usuarios->row()->nome;
+				$dados['cpf'] = $usuarios->row()->cpf;
+				$dados['endereco'] = $usuarios->row()->endereco;
+				$dados['funcao'] = $usuarios->row()->funcao;
+				//chamando a view e passando os atributos para ela preencher
+				$this->load->view('pages/cadastro_usuario', $dados);
+
+			} else {
+
+				$dados['mensagem'] = "Registro não encontrado." ;
+				$this->load->view('errors/html/v_erro', $dados);
+			}
+			
+		}
+	}
+
 	public function adicionar() {//funcao para adicionar dados.
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('Usuario_model');
+
 		//Isso é tudo validação...
 		$regras = array(
 		        array(
@@ -70,8 +97,8 @@ class Usuario_controller extends CI_Controller {
 		        )
 		);
 		$this->form_validation->set_rules($regras);
-		if ($this->form_validation->run() == FALSE) {//se não validar 
 
+		if ($this->form_validation->run() == FALSE) {//se não validar 
 			$data = array(
 				'title' => 'Cadastro',
 				'message' => 'Erro ao inserir'
@@ -80,7 +107,6 @@ class Usuario_controller extends CI_Controller {
 			$this->load->view('pages/cadastro_usuario',$data);
 
 		} else {//senão ele pega os dados inseridos
-
 			$dados = array (
 				'matricula' => $this->input->post('matricula'),
 				'nome' => $this->input->post('nome'),

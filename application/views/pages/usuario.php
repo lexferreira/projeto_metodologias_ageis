@@ -51,17 +51,24 @@
 							    </thead>
 							    <tbody>
 							    <?php foreach($usuarios as $usuario) { ?>
-								    <tr>
+								    <tr class="clickable-row">
 								    <td><?php echo $usuario['matricula'] ?></td>
 								    <td><?php echo $usuario['nome'] ?></td>
 								    <td><?php echo $usuario['CPF'] ?></td>
 								    <td><?php echo $usuario['endereco'] ?></td>
 								    <td><?php echo $usuario['funcao'] ?></td>
 								    </tr>
+								    <input 
+									    type='hidden' 
+									    id="id" 
+									    name="id" 
+									    value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>"
+								    >
 								 <?php } ?>
 							    </tbody>
 						  	</table>
-						  	<a href="/index.php/Usuario_controller/form" class="btn btn-default">inserir</a>
+				  			<a href="/index.php/Usuario_controller/form" class="btn btn-default">inserir</a>
+				  			<a href="/index.php/Usuario_controller/alterar" type="submit" class="btn btn-default">Alterar</a>
 						</div>
 					</div>
 				</div>

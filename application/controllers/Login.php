@@ -34,9 +34,9 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules($regras);
 
-		if ($this->form_validation->run() == FALSE) {
+		if ($this->form_validation->run() == FALSE) {//caso nao valide as inputs
 			$data = array(
-				'title' => 'Vendrafarma - Login',
+				'title' => 'VendraFarma - login',
 				'message' => 'Confira os dados...'
 			);
 			$this->load->view('login', $data);
@@ -48,16 +48,19 @@ class Login extends CI_Controller {
 				"senha" => $this->input->post('senha')
 			);
 
-			if($this->Usuario_model->validar($dados['matricula'],$dados['senha'])) {
-				$data = array();
-		        $data['title'] = 'Usuarios';
-		        $data['usuarios'] = $this->Usuario_model->listar();
-		        $this->load->view('pages/usuario',$data);
+			if($this->Usuario_model->validar($login['matricula'],$login['senha'])) { // se conferir
+		        $data = array(
+					'title' => 'Cadastro',
+					'usuarios' => $this->Usuario_model->listar()
+				);
+				$this->load->view('pages/usuario',$data);
 
 			} else {
 
-				$data = array();
-		        $data['title'] = 'Vendrafarma - Login';
+				$data = array(
+					'title' => 'validacao',
+					'message' => 'erro no login'
+				);
 				$this->load->view('login',$data);
 
 			}
