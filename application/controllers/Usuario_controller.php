@@ -13,4 +13,11 @@ class Usuario_controller extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('pages/usuario',$data);
 	}
+
+	public function pesquisar_usuarios(){
+		$this->load->model('usuario_model');
+		$usuarios = $this->Usuario_model->pesquisar_usuarios();
+		$data['usuarios'] = $this->Usuario_model->pesquisar_usuarios();
+		$this->load->view('cadastro_usuario', $data);
+	}
 }

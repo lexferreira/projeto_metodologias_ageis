@@ -61,6 +61,10 @@
 						</div>
 						<button type="submit" onclick="" class="btn btn-default">Cadastrar</button>
 						<button type="button" onclick="" class="btn btn-default">Limpar</button>
+						<ul>
+							<li><?php print_r($usuarios); ?></li>
+						</ul>
+
 	    			</form>
 				</div>
 			</div>
