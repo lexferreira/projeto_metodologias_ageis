@@ -18,7 +18,7 @@
 			<div class="header__logo">
 				<img src="../img/icon.png">
 			</div>
-			<h2 class="header__title">Usuario</h2>
+			<h2 class="header__title"><?=$subTitle?></h2>
 			<div class="header__user">
 				<div class="header__user__content">
 					<img src="../img/user.png">
@@ -39,7 +39,7 @@
 				<div class="main__content--right">
 					<div class="container">
 						<div class="row">
-							<table class="table table-hover col-sm-4">
+							<table class="table table-hover col-sm-4 cadastro-usuario__table">
 							    <thead>
 							      <tr>
 							        <th>Matricula</th>
@@ -50,17 +50,18 @@
 							      </tr>
 							    </thead>
 							    <tbody>
-								    <?php foreach ($usuarios as $row): ?>
+							    <?php foreach($usuarios as $usuario) { ?>
 								    <tr>
-									    <td><?= $row['nome'] ?></td>
-									    <td>Admin</td>
-									    <td>41881000977</td>
-									    <td>Rua mantova</td>
-									    <td>Administrador</td>
+								    <td><?php echo $usuario['matricula'] ?></td>
+								    <td><?php echo $usuario['nome'] ?></td>
+								    <td><?php echo $usuario['CPF'] ?></td>
+								    <td><?php echo $usuario['endereco'] ?></td>
+								    <td><?php echo $usuario['funcao'] ?></td>
 								    </tr>
-							    	<? endforeach; ?>
+								 <?php } ?>
 							    </tbody>
 						  	</table>
+						  	<a href="/index.php/Usuario_controller/form" class="btn btn-default">inserir</a>
 						</div>
 					</div>
 				</div>

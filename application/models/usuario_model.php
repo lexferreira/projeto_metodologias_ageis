@@ -10,10 +10,60 @@ class Usuario_model extends CI_Model{
 	private $senha;
 
 	public function _construct(){
-
+		parent::__construct();
 	}
 
-	public funciton get_id(){
+	//se a variavel id for null como default ele lista todos, senão ele lista apenas o que foi pedido...
+	public function listar($id = null){
+		
+		if ($id) {
+			$this->db->where('matricula', $id);
+			$this->db->select('*');
+			$this->db->from('usuario');
+			return $this->db->get()->result_array();
+		}
+
+		$this->db->select('*');
+		$this->db->from('usuario');
+		return $this->db->get()->result_array();
+	}
+
+	public function validar($matricula, $senha) {
+
+		$this->db->where('matricula', $matricula);
+		$this->db->select('senha');
+		$this->db->from('usuario');
+		$senha_db = $this->db->get()->result_array();
+
+		if($senha_db == $senha) {
+			return $senha_db;
+		} else {
+			return $senha_db;
+		}
+	}
+
+	//se a variavel id vier com algo ele adiciona, senão ele da um update... eu usei a matricula pra facilitar no front... mas depois da pra mudar...
+	public function store($dados = null, $id = null) {
+		if ($dados) {
+			if ($id) {
+				$this->db->where('matricula', $id);
+
+				if ($this->db->update("usuario", $dados)) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				if ($this->db->insert("usuario", $dados)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	}
+
+	public function get_id(){
 		return $this->id;
 	}
 	public function set_id($id){
@@ -31,18 +81,15 @@ class Usuario_model extends CI_Model{
 	public function set_cpf($cpf){
 		$this->cpf = cpf;
 	}
-
 	public function get_endereco(){
 		return $this->endereco;
 	}
 	public function set_endereco($endereco){
 		$this->endereco = $endereco;
 	}
-
 	public function get_funcao(){
 		return $this->funcao;
 	}
-
 	public function set_funcao($funcao){
 		$this->funcao = $funcao;
 	}
@@ -57,17 +104,6 @@ class Usuario_model extends CI_Model{
 	}
 	public function set_senha($senha){
 		$this->senha = $senha;
-	}
-
-	public function salvar(){
-		$this->db->insert()
-	}
-
-	public function atualizar(){
-
-	}
-	public function pesquisar_usuarios(){
-		return $this->db->get('usuario')
 	}
 }
 ?>

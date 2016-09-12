@@ -37,35 +37,86 @@
 					</ul>
 				</div>
 				<div class="main__content--right">
-					<form class=" main__content--right__form">
+					<?= form_open('index.php/Usuario_controller/adicionar')  ?>
+					<form id="form_cadastro_usuario" method="post" class=" main__content--right__form">
+					<h2><?php echo $message ?></h2>
 						<div class="form-group">
-						    <input type="text" class="form-control" id="InputName" placeholder="Nome...">
+						    <input type="text" 
+						    class="form-control" 
+						    name="nome" 
+						    id="nome" 
+						    placeholder="Nome..."
+						    value="<?= set_value('nome') ? : (isset($nome) ? $nome : '') ?>"
+						>
+						    <span class="erro"><?php echo form_error('nome') ?  : ''; ?></span>
 						</div>
 						<div class="form-group">
-						    <input type="text" class="form-control" id="" placeholder="Matricula...">
+						    <input 
+						    type="text" 
+						    class="form-control" 
+						    name="matricula" 
+						    id="matricula" 
+						    placeholder="Matricula..."
+						    value="<?= set_value('matricula') ? : (isset($matricula) ? $matricula : '') ?>"
+						>
+						    <span class="erro"><?php echo form_error('matricula') ?  : ''; ?></span>
 						</div>
 						<div class="form-group">
-						    <input type="text" class="form-control" id="" placeholder="Cpf...">
+						    <input 
+							    type="text" 
+							    class="form-control" 
+							    name="cpf" 
+							    id="cpf" 
+							    placeholder="Cpf..."
+							    value="<?= set_value('cpf') ? : (isset($cpf) ? $cpf : '') ?>"
+							>
+						    <span class="erro"><?php echo form_error('cpf') ?  : ''; ?></span>
 						</div>
 						<div class="form-group">
-						    <input type="numer" class="form-control" id="" placeholder="Endereço...">
+						    <input 
+							    type="text" 
+							    class="form-control" 
+							    name="endereco" 
+							    id="endereco" 
+							    placeholder="Endereço..."
+							    value="<?= set_value('endereco') ? : (isset($endereco) ? $endereco : '') ?>"
+							>
+						    <span class="erro"><?php echo form_error('endereco') ?  : ''; ?></span>
 						</div>
 						<div class="form-group">
-						    <input type="email" class="form-control" id="" placeholder="Função...">
+						    <input 
+							    type="text" 
+							    class="form-control" 
+							    name="funcao" 
+							    id="funcao" 
+							    placeholder="Função..."
+							    value="<?= set_value('funcao') ? : (isset($funcao) ? $funcao : '') ?>"
+							>
+						    <span class="erro"><?php echo form_error('funcao') ?  : ''; ?></span>
 						</div>
 		    			<div class="form-group">
-						    <input type="password" class="form-control" id="" placeholder="Senha...">
+						    <input 
+							    type="password" 
+							    class="form-control" 
+							    name="senha" 
+							    id="senha" 
+							    placeholder="Senha..."
+							>
+						    <span class="erro"><?php echo form_error('senha') ?  : ''; ?></span>
 						</div>
 						<div class="form-group">
-						    <input type="password" class="form-control" id="" placeholder="Repetir a senha...">
+						    <input 
+							    type="password" 
+							    class="form-control" 
+							    name="senha_" 
+							    id="senha_" 
+							    placeholder="Repetir a senha..."
+						    >
+						    <span class="erro"><?php echo form_error('senha_') ?  : ''; ?></span>
 						</div>
-						<button type="submit" onclick="" class="btn btn-default">Cadastrar</button>
-						<button type="button" onclick="" class="btn btn-default">Limpar</button>
-						<ul>
-							<li><?php print_r($usuarios); ?></li>
-						</ul>
-
+						<input type="submit" class="btn btn-default" value="Cadastrar"/>
 	    			</form>
+	    			<?= form_close(); ?>
 				</div>
 			</div>
 		</div>
