@@ -38,7 +38,7 @@
 				</div>
 				<div class="main__content--right">
 					<?= form_open('index.php/Usuario_controller/adicionar')  ?>
-					<form id="form_cadastro_usuario" method="post" class=" main__content--right__form">
+					<form class="container" id="form_cadastro_usuario" method="post">
 					<h2><?php echo $message ?></h2>
 						<div class="form-group">
 						    <input type="text" 
@@ -114,6 +114,12 @@
 						    >
 						    <span class="erro"><?php echo form_error('senha_') ?  : ''; ?></span>
 						</div>
+						<input 
+						    type='hidden' 
+						    id="id" 
+						    name="id" 
+						    value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>"
+					    >
 						<input type="submit" class="btn btn-default" value="Cadastrar"/>
 	    			</form>
 	    			<?= form_close(); ?>

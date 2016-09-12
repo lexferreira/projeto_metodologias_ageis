@@ -47,8 +47,6 @@
 					font-weight: bold;
 				}
 			}
-
-
 		}
 
 		&--right {
@@ -56,11 +54,7 @@
 			justify-content: center;
 			align-items: center;
 			width: 100%;
-
-			&__form {	
-				width: 650px;
-				transform: translateX(-65px);
-			}
+			padding: 50px;
 		}
 	}
 }

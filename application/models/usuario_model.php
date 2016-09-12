@@ -19,15 +19,18 @@ class Usuario_model extends CI_Model{
 		if ($id) {
 			$this->db->where('matricula', $id);
 			$this->db->select('*');
-			$this->db->from('usuario');
-			return $this->db->get()->result();
+			//retornando assim eu não estou retornando um array, então eu devo acessar de maneira diferente....
+			return $this->db->get('usuario');
 		}
 
 		$this->db->select('*');
 		$this->db->from('usuario');
+		//retornando assim eu estou retornando ele como array, entao eu acesso ele com os ['nome_da_coluna']...
 		return $this->db->get()->result_array();
 	}
 
+	//ta tudo funcionando, so nao consigo fazer o if comparar as senhas, quando coloco pra retornar tudo true
+	//o login funciona normal...
 	public function validar($matricula, $senha) {
 		$this->db->where('matricula', $matricula);
 		$this->db->select('senha');
@@ -43,7 +46,10 @@ class Usuario_model extends CI_Model{
 		}
 	}
 
-	//se a variavel id vier com algo ele adiciona, senão ele da um update... eu usei a matricula pra facilitar no front... mas depois da pra mudar...
+	//se a variavel id vier com algo ele adiciona, senão ele da um update... 
+	//eu usei a matricula pra facilitar no front... 
+	//mas depois da pra mudar...
+	
 	public function store($dados = null, $id = null) {
 		if ($dados) {
 			if ($id) {

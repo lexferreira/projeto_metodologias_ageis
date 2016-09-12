@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuario_controller extends CI_Controller {
+class usuario_controller extends CI_Controller {
 
+	//essa função é a executada se voce chamar apenas o controller na sua url...
 	public function index()
 	{
 		//carregando bibliotecas necessarias dentro da função, isso depois deve ser carregado num construtor.
@@ -17,8 +18,9 @@ class Usuario_controller extends CI_Controller {
 		$this->load->view('pages/usuario',$data);//passando todos esses dados para a view que foi chamada
 	}
 
+	//essa funcao e chamada se voce colocar o nome dela depois do nome da controller na url "Usuario_controller/form"
 	public function form() {
-		// foi a maneira que enconrei pra abrir o formulario sem fazer as verificações, acho que assim nao e bom usar nao, mas funcionou kkk
+		// abre o formulario para inserir
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$data = array(
@@ -28,33 +30,37 @@ class Usuario_controller extends CI_Controller {
 		$this->load->view('pages/cadastro_usuario',$data);
 	}
 
+	//essa funcao e chamada se voce colocar o nome dela depois do nome da controller na url "Usuario_controller/form_alterar/
+	//parametro1/parametro2/... etc". não esta funcionando ainda, nao consegui passar o parametro ainda...
 	public function form_alterar($id = null) {
+		$this->load->model('Usuario_model');
+		$this->load->helper('url');
+		$this->load->helper('form');
+		// abre o formulario para alterar
+		$this->load->model('Usuario_model');
 		if ($id) {
-			$this->load->model('Usuario_model');
-			//listando todos os usuarios
+			//se o parametro for passado
+			//listando todos os usuarios e guardando na variavel
 			$usuarios = $this->Usuario_model->listar($id);
 			//se houver mais que um usuario
 			if ($usuarios->num_rows() > 0 ) {
 				//passando os atributos referentes ao usuario listado
 				$dados['title'] = 'Edição de Registro';
+				$dados['message'] ='edite';
 				$dados['matricula'] = $usuarios->row()->matricula;
 				$dados['nome'] = $usuarios->row()->nome;
-				$dados['cpf'] = $usuarios->row()->cpf;
+				$dados['cpf'] = $usuarios->row()->CPF;
 				$dados['endereco'] = $usuarios->row()->endereco;
 				$dados['funcao'] = $usuarios->row()->funcao;
+				$dados['id'] = $usuarios->row()->matricula; //sim estou settando o id com a matricula
 				//chamando a view e passando os atributos para ela preencher
 				$this->load->view('pages/cadastro_usuario', $dados);
-
-			} else {
-
-				$dados['mensagem'] = "Registro não encontrado." ;
-				$this->load->view('errors/html/v_erro', $dados);
 			}
-			
 		}
 	}
 
-	public function adicionar() {//funcao para adicionar dados.
+	public function adicionar() {
+	//funcao para adicionar dados.
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -106,7 +112,8 @@ class Usuario_controller extends CI_Controller {
 			//chama a pagina novamente exibindo as mensagens de erro.
 			$this->load->view('pages/cadastro_usuario',$data);
 
-		} else {//senão ele pega os dados inseridos
+		} else {
+			//senão ele pega os dados inseridos
 			$dados = array (
 				'matricula' => $this->input->post('matricula'),
 				'nome' => $this->input->post('nome'),
@@ -115,12 +122,12 @@ class Usuario_controller extends CI_Controller {
 				'funcao' => $this->input->post('funcao'),
 				'senha' => $this->input->post('senha'),
 			);
-			//nesse caso o id nao existe, mas se fosse um alter ele existiria, caso ele seja passado assim sera feita uma adição e não alteração...
+			//nesse caso o id nao existe, mas se for um alter ele existiria,
+			// caso ele seja passado assim sera feita uma adição e não alteração...
 			$id = $this->input->post('id');
-			if($this->Usuario_model->store($dados)) {//se tudo ocorrer bem no insert ele exibe as mensagens senão ele da erro...
+			if($this->Usuario_model->store($dados,$id)) {//se tudo ocorrer bem no insert ele exibe as mensagens senão ele da erro...
 				$data = array(
 					'title' => 'Cadastro',
-					'message' => 'Usuario adicionado',
 					'usuarios' => $this->Usuario_model->listar()
 				);
 				$this->load->view('pages/usuario',$data);

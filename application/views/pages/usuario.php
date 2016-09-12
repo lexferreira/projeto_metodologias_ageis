@@ -37,7 +37,7 @@
 					</ul>
 				</div>
 				<div class="main__content--right">
-					<div class="container">
+					<div class="">
 						<div class="row">
 							<table class="table table-hover col-sm-4 cadastro-usuario__table">
 							    <thead>
@@ -58,17 +58,11 @@
 								    <td><?php echo $usuario['endereco'] ?></td>
 								    <td><?php echo $usuario['funcao'] ?></td>
 								    </tr>
-								    <input 
-									    type='hidden' 
-									    id="id" 
-									    name="id" 
-									    value="<?= set_value('id') ? : (isset($id) ? $id : ''); ?>"
-								    >
 								 <?php } ?>
 							    </tbody>
 						  	</table>
-				  			<a href="/index.php/Usuario_controller/form" class="btn btn-default">inserir</a>
-				  			<a href="/index.php/Usuario_controller/alterar" type="submit" class="btn btn-default">Alterar</a>
+				  			<a href="/index.php/usuario_controller/form" class="btn btn-default">inserir</a>
+				  			<a href="/index.php/usuario_controller/form_alterar/123" type="submit" class="btn btn-default">Alterar</a>
 						</div>
 					</div>
 				</div>

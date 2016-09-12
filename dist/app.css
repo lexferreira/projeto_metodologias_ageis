@@ -87,10 +87,8 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%; }
-      .main__content--right__form {
-        width: 650px;
-        transform: translateX(-65px); }
+      width: 100%;
+      padding: 50px; }
 
 .login {
   background: -webkit-gradient(linear, left top, right top, from(#1bca61), to(#fff)) no-repeat;
