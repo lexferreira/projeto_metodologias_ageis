@@ -17,7 +17,7 @@ class login extends CI_Controller {
 	public function logar() {
 		$this->load->library('form_validation');
 		$this->load->helper('url');
-		$this->load->model('Usuario_model');
+		$this->load->model('usuario_model');
 
 		$regras = array(
 		        array(
@@ -35,6 +35,7 @@ class login extends CI_Controller {
 		$this->form_validation->set_rules($regras);
 
 		if ($this->form_validation->run() == FALSE) {//caso nao valide as inputs
+			$this->load->helper('url');
 			$data = array(
 				'title' => 'VendraFarma - login',
 				'message' => 'Confira os dados...'
@@ -42,21 +43,19 @@ class login extends CI_Controller {
 			$this->load->view('login', $data);
 
 		} else {
-
 			$login = array(
 				"matricula" => $this->input->post('matricula'),
 				"senha" => $this->input->post('senha')
 			);
 
-			if($this->Usuario_model->validar($login['matricula'],$login['senha'])) { // se conferir
+			if($this->usuario_model->validar($login['matricula'],$login['senha'])) { // se conferir
 		        $data = array(
 					'title' => 'Cadastro',
-					'usuarios' => $this->Usuario_model->listar()
+					'usuarios' => $this->usuario_model->listar()
 				);
 				$this->load->view('pages/usuario',$data);
 
 			} else {
-
 				$data = array(
 					'title' => 'validacao',
 					'message' => 'erro no login'

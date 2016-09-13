@@ -47,6 +47,7 @@
 							        <th>Cpf</th>
 							        <th>Endereço</th>
 							        <th>Função</th>
+							        <th>opção</th>
 							      </tr>
 							    </thead>
 							    <tbody>
@@ -57,12 +58,14 @@
 								    <td><?php echo $usuario['CPF'] ?></td>
 								    <td><?php echo $usuario['endereco'] ?></td>
 								    <td><?php echo $usuario['funcao'] ?></td>
+								    <td>
+								    <a href="/index.php/usuario_controller/form_alterar/<?php echo $usuario['matricula'] ?>" class="btn btn-default">
+								     alterar</a></td>
 								    </tr>
 								 <?php } ?>
 							    </tbody>
 						  	</table>
 				  			<a href="/index.php/usuario_controller/form" class="btn btn-default">inserir</a>
-				  			<a href="/index.php/usuario_controller/form_alterar/123" type="submit" class="btn btn-default">Alterar</a>
 						</div>
 					</div>
 				</div>
