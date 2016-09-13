@@ -18,7 +18,7 @@
 			<div class="header__logo">
 				<img src="../img/icon.png">
 			</div>
-			<h2 class="header__title"><?=$subTitle?></h2>
+			<h2 class="header__title">Usuario</h2>
 			<div class="header__user">
 				<div class="header__user__content">
 					<img src="../img/user.png">
@@ -59,8 +59,17 @@
 								    <td><?php echo $usuario['endereco'] ?></td>
 								    <td><?php echo $usuario['funcao'] ?></td>
 								    <td>
-								    <a href="/index.php/usuario_controller/form_alterar/<?php echo $usuario['matricula'] ?>" class="btn btn-default">
-								     alterar</a></td>
+									    <a
+									    	href="/index.php/usuario_controller/form_alterar/<?php echo $usuario['matricula'] ?>" 
+									    	class="btn btn-default">
+									     	alterar
+									     </a>
+									     <a
+									    	href="/index.php/usuario_controller/delete/<?php echo $usuario['matricula'] ?>" 
+									    	class="btn btn-default">
+									     	deletar
+									     </a>
+								     </td>
 								    </tr>
 								 <?php } ?>
 							    </tbody>

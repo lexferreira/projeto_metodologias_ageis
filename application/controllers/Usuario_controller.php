@@ -143,4 +143,9 @@ class usuario_controller extends CI_Controller {
 			
 		}
 	}
+
+	public function delete($id=null) {
+		$this->load->model('Usuario_model');
+		$this->Usuario_model->delete($id);
+	}
 }

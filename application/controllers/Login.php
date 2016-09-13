@@ -34,7 +34,8 @@ class login extends CI_Controller {
 
 		$this->form_validation->set_rules($regras);
 
-		if ($this->form_validation->run() == FALSE) {//caso nao valide as inputs
+		if ($this->form_validation->run() == FALSE) {
+		//caso nao valide as inputs
 			$this->load->helper('url');
 			$data = array(
 				'title' => 'VendraFarma - login',
@@ -63,8 +64,7 @@ class login extends CI_Controller {
 				$this->load->view('login',$data);
 
 			}
-	}
+		}
 		
-
 	}
 }
