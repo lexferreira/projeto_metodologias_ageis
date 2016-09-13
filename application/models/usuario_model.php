@@ -70,6 +70,12 @@ class usuario_model extends CI_Model{
 		}
 	}
 
+	public function delete($id = null){
+		if ($id) {
+			return $this->db->where('matricula', $id)->delete('usuario');
+		}
+	}
+
 	public function get_id(){
 		return $this->id;
 	}

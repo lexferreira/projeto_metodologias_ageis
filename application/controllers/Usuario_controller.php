@@ -146,6 +146,12 @@ class usuario_controller extends CI_Controller {
 
 	public function delete($id=null) {
 		$this->load->model('Usuario_model');
+		$this->load->helper('url');
 		$this->Usuario_model->delete($id);
+		$data = array(
+					'title' => 'Cadastro',
+					'usuarios' => $this->Usuario_model->listar()
+				);
+		$this->load->view('pages/usuario',$data);
 	}
 }
