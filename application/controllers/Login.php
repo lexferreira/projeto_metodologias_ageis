@@ -44,12 +44,14 @@ class login extends CI_Controller {
 			$this->load->view('login', $data);
 
 		} else {
+
 			$login = array(
 				"matricula" => $this->input->post('matricula'),
 				"senha" => $this->input->post('senha')
 			);
 
-			if($this->usuario_model->validar($login['matricula'],$login['senha'])) { // se conferir
+			if($this->usuario_model->validar($login['matricula'],$login['senha'])) { 
+				// se conferir
 		        $data = array(
 					'title' => 'Cadastro',
 					'usuarios' => $this->usuario_model->listar()
