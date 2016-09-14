@@ -3,7 +3,7 @@
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	height: 100%;
+	height: calc(100vh - 100px);
 
 	&__content {
 		background-color: $cor-verde-dark;
@@ -25,7 +25,7 @@
 				font-weight: bold;
 			}
 
-			.btn {
+			.btn { 
 				background-color: $cor-verde-ligth;
 			}
 		}

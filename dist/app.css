@@ -115,7 +115,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; }
+  height: calc(100vh - 100px); }
   .login__content {
     background-color: #128440;
     padding: 15px;
