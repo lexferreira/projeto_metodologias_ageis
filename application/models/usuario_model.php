@@ -28,16 +28,15 @@ class usuario_model extends CI_Model{
 
 	public function validar($matricula, $senha) {
 		$this->db->where('matricula', $matricula);
+		$this->db->where('senha', $senha);
 		$this->db->select('senha');
 		$this->db->from('usuario');
-		$dados = array( 
-			'senha' => $this->db->get()->result_array()
-		);
+		$dados =  $this->db->get()->num_rows();
 
-		if($dados['senha']==$senha) {
+		if($dados >= 1) {
 			return true;
 		} else {
-			return true;
+			return false;
 		}
 	}
 
