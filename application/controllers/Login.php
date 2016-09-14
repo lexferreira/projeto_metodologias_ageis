@@ -9,7 +9,8 @@ class login extends CI_Controller {
 		$this->load->helper('form');
 		$data = array(
 			'title' => 'Vendrafarma - Login',
-			'message' => 'Bem vindo! faça seu login'
+			'message' => 'Bem vindo! faça seu login',
+			'classe_menu' => '--hidden'
 		);
 		$this->load->view('include/header', $data);
 		$this->load->view('login', $data);
@@ -40,7 +41,8 @@ class login extends CI_Controller {
 			$this->load->helper('url');
 			$data = array(
 				'title' => 'VendraFarma - login',
-				'message' => 'Confira os dados...'
+				'message' => 'Confira os dados...',
+				'classe_menu' => '--hidden'
 			);
 			$this->load->view('include/header', $data);
 			$this->load->view('login', $data);
@@ -55,7 +57,8 @@ class login extends CI_Controller {
 				$this->load->helper('url');
 		        $data = array(
 					'title' => 'Cadastro',
-					'usuarios' => $this->usuario_model->listar()
+					'usuarios' => $this->usuario_model->listar(),
+					 'classe_menu' => ''
 				);
 				$this->load->view('include/header', $data);
 				$this->load->view('pages/usuario', $data);
@@ -65,7 +68,8 @@ class login extends CI_Controller {
 				$this->load->helper('url');
 				$data = array(
 					'title' => 'validacao',
-					'message' => 'erro no login'
+					'message' => 'erro no login',
+					'classe_menu' => '--hidden'
 				);
 				$this->load->view('include/header', $data);
 				$this->load->view('login', $data);

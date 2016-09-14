@@ -1,6 +1,5 @@
-		<div class="main__content login">
+		<div class="login">
 			<div class="container-fluid login__content">
-
 			<?= form_open('index.php/login/logar')  ?>
     		<form id="form_login" method="post" class="login__content__form">
     			<h4>Seja Bem vindo!</h4>

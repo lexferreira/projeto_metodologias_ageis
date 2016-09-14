@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="main">
 	    <div class="header">
 			<div class="header__logo">
-				<img src="<?php echo base_url(); ?>img/icon.png">
+				<a href="/login"><img src="<?php echo base_url(); ?>img/icon.png"></a>
 			</div>
 			<h2 class="header__title">Login</h2>
 			<div class="header__user">
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="main__content">
-			<div class="main__content__menu">
+			<div class="main__content__menu<?php echo $classe_menu; ?>">
 				<ul class="menu__itens">
 					<li class="menu__item"><a href="#">Usuario</a></li>
 					<li class="menu__item"><a href="#">Vendas</a></li>

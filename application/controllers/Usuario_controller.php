@@ -11,7 +11,8 @@ class usuario_controller extends CI_Controller {
 		$this->load->helper('form');
 		$data = array(
 			'title' => 'Vendrafarma - Usuario',
-			'usuarios' => $this->Usuario_model->listar()
+			'usuarios' => $this->Usuario_model->listar(),
+			'classe_menu' => ''
 		);
 		$this->load->view('include/header',$data);
 		$this->load->view('pages/usuario',$data);
@@ -24,7 +25,8 @@ class usuario_controller extends CI_Controller {
 		$this->load->helper('form');
 		$data = array(
 			'title' => 'Cadastro',
-			'message' => 'Cadastre os dados'
+			'message' => 'Cadastre os dados',
+			 'classe_menu' => ''
 		);
 		$this->load->view('include/header',$data);
 		$this->load->view('pages/cadastro_usuario',$data);
@@ -44,6 +46,7 @@ class usuario_controller extends CI_Controller {
 			if ($usuarios->num_rows() > 0 ) {
 				//passando os atributos referentes ao usuario listado
 				$data['title'] = 'Edição de Registro';
+				$data['classe_menu'] = '';
 				$data['message'] ='edite';
 				$data['matricula'] = $usuarios->row()->matricula;
 				$data['nome'] = $usuarios->row()->nome;
@@ -107,7 +110,8 @@ class usuario_controller extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
 				'title' => 'Cadastro',
-				'message' => 'Erro ao inserir'
+				'message' => 'Erro ao inserir',
+				'classe_menu' => ''
 			);
 			$this->load->view('include/header',$data);
 			$this->load->view('pages/cadastro_usuario',$data);
@@ -128,7 +132,8 @@ class usuario_controller extends CI_Controller {
 			if($this->Usuario_model->store($dados,$id)) {//se tudo ocorrer bem no insert ele exibe as mensagens senão exibe erro.
 				$data = array(
 					'title' => 'Cadastro',
-					'usuarios' => $this->Usuario_model->listar()
+					'usuarios' => $this->Usuario_model->listar(),
+					'classe_menu' => ''
 				);
 				$this->load->view('include/header',$data);
 				$this->load->view('pages/usuario',$data);
@@ -137,7 +142,8 @@ class usuario_controller extends CI_Controller {
 			} else {
 				$data = array(
 					'title' => 'Cadastro',
-					'message' => 'Erro ao inserir no banco'
+					'message' => 'Erro ao inserir no banco',
+					'classe_menu' => ''
 				);
 				$this->load->view('include/header',$data);
 				$this->load->view('pages/cadastro_usuario',$data);
@@ -153,8 +159,11 @@ class usuario_controller extends CI_Controller {
 		$this->Usuario_model->delete($id);
 		$data = array(
 					'title' => 'Cadastro',
-					'usuarios' => $this->Usuario_model->listar()
+					'usuarios' => $this->Usuario_model->listar(),
+					'classe_menu' => ''
 				);
+		$this->load->view('include/header',$data);
 		$this->load->view('pages/usuario',$data);
+		$this->load->view('include/footer',$data);
 	}
 }
