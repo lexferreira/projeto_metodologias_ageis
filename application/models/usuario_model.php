@@ -12,25 +12,20 @@ class usuario_model extends CI_Model{
 	public function _construct(){
 		parent::__construct();
 	}
-
 	//se a variavel id for null como default ele lista todos, senão ele lista apenas o que foi pedido...
 	public function listar($id = null){
 		
 		if ($id) {
 			$this->db->where('matricula', $id);
 			$this->db->select('*');
-			//retornando assim eu não estou retornando um array, então eu devo acessar de maneira diferente....
 			return $this->db->get('usuario');
 		}
 
 		$this->db->select('*');
 		$this->db->from('usuario');
-		//retornando assim eu estou retornando ele como array, entao eu acesso ele com os ['nome_da_coluna']...
 		return $this->db->get()->result_array();
 	}
 
-	//ta tudo funcionando, so nao consigo fazer o if comparar as senhas, quando coloco pra retornar tudo true
-	//o login funciona normal...
 	public function validar($matricula, $senha) {
 		$this->db->where('matricula', $matricula);
 		$this->db->select('senha');
@@ -42,7 +37,7 @@ class usuario_model extends CI_Model{
 		if($dados['senha']==$senha) {
 			return true;
 		} else {
-			return true; //so para testes deixei ele como true
+			return true;
 		}
 	}
 

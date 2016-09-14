@@ -11,7 +11,9 @@ class login extends CI_Controller {
 			'title' => 'Vendrafarma - Login',
 			'message' => 'Bem vindo! faça seu login'
 		);
+		$this->load->view('include/header', $data);
 		$this->load->view('login', $data);
+		$this->load->view('include/footer', $data);
 	}
 
 	public function logar() {
@@ -35,35 +37,39 @@ class login extends CI_Controller {
 		$this->form_validation->set_rules($regras);
 
 		if ($this->form_validation->run() == FALSE) {
-		//caso nao valide as inputs
 			$this->load->helper('url');
 			$data = array(
 				'title' => 'VendraFarma - login',
 				'message' => 'Confira os dados...'
 			);
+			$this->load->view('include/header', $data);
 			$this->load->view('login', $data);
+			$this->load->view('include/footer', $data);
 
 		} else {
 
-			$login = array(
-				"matricula" => $this->input->post('matricula'),
-				"senha" => $this->input->post('senha')
-			);
+			$matricula = $this->input->post('matricula');
+			$senha = $this->input->post('senha');
 
-			if($this->usuario_model->validar($login['matricula'],$login['senha'])) { 
-				// se conferir
+			if($this->usuario_model->validar($matricula, $senha)) { 
+				$this->load->helper('url');
 		        $data = array(
 					'title' => 'Cadastro',
 					'usuarios' => $this->usuario_model->listar()
 				);
-				$this->load->view('pages/usuario',$data);
+				$this->load->view('include/header', $data);
+				$this->load->view('pages/usuario', $data);
+				$this->load->view('include/footer', $data);
 
 			} else {
+				$this->load->helper('url');
 				$data = array(
 					'title' => 'validacao',
 					'message' => 'erro no login'
 				);
-				$this->load->view('login',$data);
+				$this->load->view('include/header', $data);
+				$this->load->view('login', $data);
+				$this->load->view('include/footer', $data);
 
 			}
 		}

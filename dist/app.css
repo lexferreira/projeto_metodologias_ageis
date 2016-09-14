@@ -14,7 +14,9 @@ html {
   width: 100%;
   background-color: #128440;
   display: flex;
-  padding: 5px 10px; }
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 10; }
   .header__title {
     color: #fff;
     font-size: 50px;
@@ -48,14 +50,18 @@ html {
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
   .main__content {
-    flex: 1; }
+    background: -webkit-gradient(linear, left top, right top, from(#1bca61), to(#fff)) no-repeat;
+    position: relative; }
     .main__content__menu {
       display: flex;
       width: 200px;
-      height: 100%;
-      box-shadow: 0 2px 15px 1px; }
+      height: calc(100% - 100px);
+      box-shadow: 0 2px 15px 1px;
+      position: absolute;
+      top: 100px; }
       .main__content__menu .menu__itens {
         display: flex;
         width: 100%;
@@ -88,7 +94,18 @@ html {
       justify-content: center;
       align-items: center;
       width: 100%;
-      padding: 50px; }
+      padding: 50px;
+      margin-left: 100px; }
+      .main__content--right .title {
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-weight: bolder; }
+      .main__content--right form {
+        width: 600px; }
+        .main__content--right form .erro {
+          color: red; }
 
 .login {
   background: -webkit-gradient(linear, left top, right top, from(#1bca61), to(#fff)) no-repeat;
